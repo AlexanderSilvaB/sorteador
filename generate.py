@@ -2,7 +2,7 @@
 # @Author: Alexander Silva Barbosa
 # @Date:   2022-09-09 12:13:25
 # @Last Modified by:   Alexander Silva Barbosa
-# @Last Modified time: 2022-09-09 12:57:14
+# @Last Modified time: 2022-09-09 13:35:59
 
 import os
 import sys
@@ -63,11 +63,34 @@ def main(args):
     with open(output, 'w') as file:
         file.write(html)
 
-    results = json.dumps(links, indent=4)
-    print(results)
+    try:
+        with open('results.json') as file:
+            results = json.load(file)
+    except:
+        results = {}
+
+    results[title] = links
     
     with open('results.json', 'w') as file:
-        file.write(results)
+        file.write(json.dumps(results))
+
+    links = {}
+    for title in results:
+        for person in results[title]:
+            if person not in links:
+                links[person] = {}
+            links[person][title] = results[title][person]
+
+    text = ''
+    for person in links:
+        text += person + '\n'
+        for title in links[person]:
+            text += title + ': ' + links[person][title] + '\n'
+        text += '\n'
+    
+    print(text)
+    with open('results.txt', 'w') as file:
+        file.write(text)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
