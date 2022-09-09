@@ -27,6 +27,6 @@
 
     ],
     "template": "index.tpl",
-    "output": "oculto.html",
+    "output": "OCULTO",
     "url": "https://alexandersilvab.github.io/sorteador"
 }

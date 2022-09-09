@@ -2,7 +2,7 @@
 # @Author: Alexander Silva Barbosa
 # @Date:   2022-09-09 12:13:25
 # @Last Modified by:   Alexander Silva Barbosa
-# @Last Modified time: 2022-09-09 13:35:59
+# @Last Modified time: 2022-09-09 13:56:14
 
 import os
 import sys
@@ -10,6 +10,7 @@ import json
 import copy
 import random
 import string
+import glob
 
 CODE_LENGTH = 5
 CODE_CHARS = string.ascii_uppercase + string.digits
@@ -24,7 +25,23 @@ def main(args):
         config = json.load(file)
     
     output = 'resultados/' + config['output']
+    os.makedirs(output, exist_ok=True)
+ 
+    files = glob.glob(output + '/*')
+    for f in files:
+        os.remove(f)
+
+    
+    
+
+    
     url = config['url'] + '/' + output
+
+    title = config['title']
+    restrictions = config['restrictions']
+    template = config['template']
+
+    restrictions = '<br/>'.join(restrictions)
 
     results = {}
     links = {}
@@ -38,30 +55,20 @@ def main(args):
         while results[code] == participant:
             results[code] = random.choice(participants)
         participants.remove(results[code])
-        links[participant] = url + '#' + code
 
-    title = config['title']
-    restrictions = config['restrictions']
-    template = config['template']
+        file_name = code + '.html'
+        links[participant] = url + '/' + file_name
 
-    restrictions = '<br/>'.join(restrictions)
+        with open(template) as file:
+            html = file.read()
+        
+        html = html.replace("$NAME", results[code])
+        html = html.replace("$TITLE", title)
+        html = html.replace("$RESTRICTIONS", restrictions)
 
-    with open(template) as file:
-        html = file.read()
-    
-    html = html.replace("$DATA", json.dumps(results))
-    html = html.replace("$TITLE", title)
-    html = html.replace("$RESTRICTIONS", restrictions)
-    
-    
 
-    try:
-        os.mkdir('resultados')
-    except:
-        pass
-
-    with open(output, 'w') as file:
-        file.write(html)
+        with open(output + '/' + file_name, 'w') as file:
+            file.write(html)
 
     try:
         with open('results.json') as file:

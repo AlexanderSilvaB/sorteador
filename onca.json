@@ -27,6 +27,6 @@
 
     ],
     "template": "index.tpl",
-    "output": "onca.html",
+    "output": "ONCA",
     "url": "https://alexandersilvab.github.io/sorteador"
 }
