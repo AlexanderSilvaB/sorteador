@@ -1,0 +1,29 @@
+{
+    "title": "Amigo Oculto",
+    "participants": [
+        "Alexander",
+        "Romulo",
+        "Igor",
+        "Jéssica",
+        "Edneia",
+        "Eva",
+        "Agostinho",
+        "Larissa",
+        "Air",
+        "Elousia",
+        "Luna",
+        "Gil",
+        "Dene",
+        "Leandro",
+        "Laura",
+        "Otávio",
+        "Sofia",
+        "Lurdinha"
+    ],
+    "restrictions": [
+
+    ],
+    "template": "index.tpl",
+    "output": "oculto.html",
+    "url": "file:///home/alexander/personal/sort/index.html"
+}

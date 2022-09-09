@@ -1,0 +1,36 @@
+<!-- 
+  @Author: Alexander Silva Barbosa
+  @Date:   2022-09-09 12:28:22
+  @Last Modified by:   Alexander Silva Barbosa
+  @Last Modified time: 2022-09-09 12:43:08
+-->
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Oculto</title>
+</head>
+
+<body>
+    <h3 style="text-align: center;">Amigo Oculto</h3>
+    <hr/>
+    <h2 style="text-align: center;">Você saiu com:</h2>
+    <h1 id="name" style="text-align: center;"></h1>
+    <br/>
+    <br/>
+    <p></p>
+    <script>
+        var data = {"DNFJ7": "Agostinho", "A6IGZ": "Eva", "1G3VW": "Lurdinha", "EIY5Q": "Laura", "0ZR28": "Leandro", "XRMUL": "Alexander", "7YN7J": "Edneia", "JRVSF": "Igor", "DKHLY": "Larissa", "M13GK": "Romulo", "2R28L": "Air", "X8ALO": "Luna", "9DJF9": "Sofia", "IXXJS": "Elousia", "BKY54": "Gil", "NLPJ0": "Dene", "D2KZU": "Ot\u00e1vio", "OLZCQ": "J\u00e9ssica"};
+        if (window.location.hash && window.location.hash.length > 0) {
+            var code = window.location.hash.replace('#', '');
+            if (code in data)
+                document.getElementById('name').innerText = data[code];
+            else
+                document.getElementById('name').innerText = "Ninguém";
+        } else {
+            document.getElementById('name').innerText = "Ninguém";
+        }
+    </script>
+</body>
+
+</html>

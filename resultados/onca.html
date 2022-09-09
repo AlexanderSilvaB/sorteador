@@ -1,0 +1,36 @@
+<!-- 
+  @Author: Alexander Silva Barbosa
+  @Date:   2022-09-09 12:28:22
+  @Last Modified by:   Alexander Silva Barbosa
+  @Last Modified time: 2022-09-09 12:43:08
+-->
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo da Onça</title>
+</head>
+
+<body>
+    <h3 style="text-align: center;">Amigo da Onça</h3>
+    <hr/>
+    <h2 style="text-align: center;">Você saiu com:</h2>
+    <h1 id="name" style="text-align: center;"></h1>
+    <br/>
+    <br/>
+    <p></p>
+    <script>
+        var data = {"C1UIK": "Lurdinha", "RGUTJ": "Air", "1BGDX": "Agostinho", "AHAR8": "Sofia", "6C4BE": "Laura", "EJND6": "Luna", "7OQ2C": "Elousia", "BUFRO": "J\u00e9ssica", "HQGG8": "Edneia", "42DAG": "Romulo", "LC6OX": "Ot\u00e1vio", "SZPO9": "Eva", "FXQ7W": "Alexander", "8N3G4": "Dene", "7KVDE": "Leandro", "V56NT": "Larissa", "78XFZ": "Igor", "HUG8O": "Gil"};
+        if (window.location.hash && window.location.hash.length > 0) {
+            var code = window.location.hash.replace('#', '');
+            if (code in data)
+                document.getElementById('name').innerText = data[code];
+            else
+                document.getElementById('name').innerText = "Ninguém";
+        } else {
+            document.getElementById('name').innerText = "Ninguém";
+        }
+    </script>
+</body>
+
+</html>
