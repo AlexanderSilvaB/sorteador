@@ -2,7 +2,7 @@
 # @Author: Alexander Silva Barbosa
 # @Date:   2022-09-09 12:13:25
 # @Last Modified by:   Alexander Silva Barbosa
-# @Last Modified time: 2022-09-09 13:56:14
+# @Last Modified time: 2022-09-09 14:26:44
 
 import os
 import sys
@@ -11,11 +11,16 @@ import copy
 import random
 import string
 import glob
+import random
+import time
 
 CODE_LENGTH = 5
 CODE_CHARS = string.ascii_uppercase + string.digits
 
 def main(args):
+
+    random.seed(time.time())
+
     if len(args) > 0:
         config_file = args[0]
     else:
