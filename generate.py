@@ -2,7 +2,7 @@
 # @Author: Alexander Silva Barbosa
 # @Date:   2022-09-09 12:13:25
 # @Last Modified by:   Alexander Silva Barbosa
-# @Last Modified time: 2022-09-09 12:54:34
+# @Last Modified time: 2022-09-09 12:57:14
 
 import os
 import sys
@@ -23,7 +23,8 @@ def main(args):
     with open(config_file) as file:
         config = json.load(file)
     
-    url = config['url']
+    output = 'resultados/' + config['output']
+    url = config['url'] + '/' + output
 
     results = {}
     links = {}
@@ -59,7 +60,6 @@ def main(args):
     except:
         pass
 
-    output = 'resultados/' + config['output']
     with open(output, 'w') as file:
         file.write(html)
 
